@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package="../../common/orders";
+//package ProductOrder;
+
+message Order{
+    string id=1;
+    string status=2;
+    repeated OrderItem order_items=4;
+}
+
+message OrderItem{
+    string code=1;
+    string name=2;
+    float unit_price=3;
+    int32 quantity=4;
+}
+
+message OrderResponse{
+    string orderId=1;
+    string error=2;
+}
+
+
+
+service OrderService{
+    rpc CreateOrder (Order) returns (OrderResponse){}
+}
